@@ -1,18 +1,20 @@
 import React from "react";
 
 import Header from './components/Header';
-import Rooms from "./components/Rooms";
+import ActionBar from "./components/ActionBar";
+import Room from "./components/Room";
 
 import { Box } from "@mui/material";
 
 function App() {
   return (
-    <div className="App">
+    <Box className="App" sx={{height: '100%'}}>
       <Header />
-      <Box style={{margin: '4em 1em 0'}}>
-        <Rooms />
+      <Box style={{paddingTop: '4em', height: '100%'}}>
+        {/* <ActionBar /> */}
+        <Room />
       </Box>
-    </div>
+    </Box>
   );
 }
 

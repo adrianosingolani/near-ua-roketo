@@ -3,16 +3,43 @@ import getNearEnv from '../nearEnv';
 import { parseNearAmount } from 'near-api-js/lib/utils/format';
 import Big from 'big.js';
 
+import { styled } from '@mui/material/styles';
 import {
   Box,
   Button,
+  Modal,
+  Typography
 } from '@mui/material';
 
 const nearEnv = getNearEnv('testnet');
 
-function Rooms() {
+const ActionButton = styled(Button)(({ theme }) => ({
+  marginLeft: theme.spacing(0),
+  '&:last-child': {
+    marginRight: 0
+  }
+}));
+
+const modalStyle = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+
+function ActionBar() {
   const [disableButtons, setDisableButtons] = useState(true);
   const [outgoingStreams, setOutgoingStreams] = useState([]);
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     if (window.accountId) setDisableButtons(false);
@@ -24,7 +51,7 @@ function Rooms() {
   useEffect(() => {
     console.log(outgoingStreams);
   }, [outgoingStreams])
-  
+
   const createStream = (settings) => {
     const pricePerHour = parseNearAmount(settings.price.toString());
     const pricePerMinute = Big(pricePerHour).div(60).toFixed(0);
@@ -109,8 +136,9 @@ function Rooms() {
 
 
   return (
-    <Box>
-        <Button
+    <>
+      <Box sx={{backgroundColor: '#F55'}}>
+        <ActionButton
           disabled={disableButtons}
           variant='contained'
           onClick={() => createStream({
@@ -119,13 +147,31 @@ function Rooms() {
           })}
         >
           Create stream
-        </Button>
+        </ActionButton>
 
-        <Button disabled={disableButtons} variant='contained' onClick={() => nearDeposit()}>{`Wrap (1 NEAR -> 1 wNEAR)`}</Button>
-        <Button disabled={disableButtons} variant='contained' onClick={() => getAccountIncomingStreams()}>Get incoming streams (dApp)</Button>
-        <Button disabled={disableButtons} variant='contained' onClick={() => getAccountOutgoingStreams()}>Get outgoing streams (User)</Button>
-    </Box>
+        <ActionButton disabled={disableButtons} variant='contained' onClick={() => nearDeposit()}>{`Wrap (1 NEAR -> 1 wNEAR)`}</ActionButton>
+        <ActionButton disabled={disableButtons} variant='contained' onClick={() => getAccountIncomingStreams()}>Get incoming streams (dApp)</ActionButton>
+        <ActionButton disabled={disableButtons} variant='contained' onClick={() => getAccountOutgoingStreams()}>Get outgoing streams (User)</ActionButton>
+        <ActionButton disabled={disableButtons} variant='contained' onClick={handleOpen}>Create/Join room</ActionButton>
+      </Box>
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
+    </>
   )
 }
 
-export default Rooms;
+export default ActionBar;

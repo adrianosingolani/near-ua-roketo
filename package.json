@@ -15,6 +15,7 @@
     "process": "^0.11.10",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hls-player": "^3.0.7",
     "react-scripts": "^4.0.3",
     "web-vitals": "^2.1.4"
   },
