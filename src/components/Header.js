@@ -35,7 +35,7 @@ export default function Header({ walletConnection, accountId, wrapContract }) {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Streaming for Ukraine
+            Live for Ukraine
           </Typography>
           {account.accountId ? (
             <>

@@ -19,19 +19,24 @@ const GridItem = styled(Paper)(({ theme }) => ({
   border: '1px solid #EEE'
 }));
 
-function Room({ dappContract }) {
+function Room({ wrapContract, dappContract, roketoContract, accountId }) {
   return (
     <Box sx={{ height: '100%' }}>
       <Grid container spacing={2} sx={{ height: '100%', padding: '16px 16px 0' }}>
         <Grid item xs={8}>
           <GridItem>
-            <Video />
+            <Video
+
+            />
           </GridItem>
         </Grid>
         <Grid item xs={4} sx={{ height: '100%' }}>
           <GridItem sx={{ height: '100%' }}>
             <ChatTabs
               dappContract={dappContract}
+              roketoContract={roketoContract}
+              accountId={accountId}
+              wrapContract={wrapContract}
             />
           </GridItem>
         </Grid>

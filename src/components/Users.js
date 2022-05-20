@@ -7,11 +7,6 @@ import {
 } from '@mui/material';
 
 const chatUsers = [
-  'trpr.testnet',
-  'adriano.testnet',
-  'brooklyn.testnet',
-  'cookiecake.testnet',
-  'livia.testnet'
 ]
 
 export default function Users() {

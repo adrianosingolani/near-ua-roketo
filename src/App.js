@@ -17,6 +17,9 @@ function App({ walletConnection, accountId, nearEnv, roketoContract, wrapContrac
         <Room 
           walletConnection={walletConnection}
           dappContract={dappContract}
+          roketoContract={roketoContract}
+          accountId={accountId}
+          wrapContract={wrapContract}
         />
       </Box>
     </Box>
