@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/near-ua-roketo/static/css/main.22e1a3b4.chunk.css",
+    "main.js": "/near-ua-roketo/static/js/main.f4d46891.chunk.js",
+    "main.js.map": "/near-ua-roketo/static/js/main.f4d46891.chunk.js.map",
+    "runtime-main.js": "/near-ua-roketo/static/js/runtime-main.8d47f72d.js",
+    "runtime-main.js.map": "/near-ua-roketo/static/js/runtime-main.8d47f72d.js.map",
+    "static/js/2.57f5e2db.chunk.js": "/near-ua-roketo/static/js/2.57f5e2db.chunk.js",
+    "static/js/2.57f5e2db.chunk.js.map": "/near-ua-roketo/static/js/2.57f5e2db.chunk.js.map",
+    "static/js/3.920eb6fb.chunk.js": "/near-ua-roketo/static/js/3.920eb6fb.chunk.js",
+    "static/js/3.920eb6fb.chunk.js.map": "/near-ua-roketo/static/js/3.920eb6fb.chunk.js.map",
+    "index.html": "/near-ua-roketo/index.html",
+    "static/css/main.22e1a3b4.chunk.css.map": "/near-ua-roketo/static/css/main.22e1a3b4.chunk.css.map",
+    "static/js/2.57f5e2db.chunk.js.LICENSE.txt": "/near-ua-roketo/static/js/2.57f5e2db.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8d47f72d.js",
+    "static/js/2.57f5e2db.chunk.js",
+    "static/css/main.22e1a3b4.chunk.css",
+    "static/js/main.f4d46891.chunk.js"
+  ]
+}
