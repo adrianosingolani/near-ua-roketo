@@ -16,9 +16,10 @@ const GridItem = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  border: '1px solid #EEE'
 }));
 
-function Room() {
+function Room({ dappContract }) {
   return (
     <Box sx={{ height: '100%' }}>
       <Grid container spacing={2} sx={{ height: '100%', padding: '16px 16px 0' }}>
@@ -29,7 +30,9 @@ function Room() {
         </Grid>
         <Grid item xs={4} sx={{ height: '100%' }}>
           <GridItem sx={{ height: '100%' }}>
-            <ChatTabs />
+            <ChatTabs
+              dappContract={dappContract}
+            />
           </GridItem>
         </Grid>
       </Grid>

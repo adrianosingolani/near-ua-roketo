@@ -11,7 +11,7 @@ import { initializeContract } from "./utils";
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
   },
   components: {
     // Name of the component
@@ -28,13 +28,20 @@ const darkTheme = createTheme({
 });
 
 window.nearInitPromise = initializeContract()
-  .then(() => {
+  .then(({ walletConnection, accountId, nearEnv, roketoContract, wrapContract, dappContract }) => {
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(
       <React.StrictMode>
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
-          <App />
+          <App 
+            walletConnection={walletConnection}
+            accountId={accountId}
+            nearEnv={nearEnv}
+            roketoContract={roketoContract}
+            wrapContract={wrapContract}
+            dappContract={dappContract}
+          />
         </ThemeProvider>
       </React.StrictMode>
     );

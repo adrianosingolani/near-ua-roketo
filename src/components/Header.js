@@ -11,15 +11,15 @@ import {
   Button
 } from '@mui/material/';
 
-export default function ButtonAppBar() {
-  const account = window.walletConnection.account();
+export default function Header({ walletConnection, accountId, wrapContract }) {
+  const account = walletConnection.account();
 
   const [balance, setBalance] = useState(0)
 
   useEffect(() => {
-    if (window.accountId && window.wrapContract) {
-      window.wrapContract.ft_balance_of({
-        account_id: `${window.accountId}`,
+    if (accountId && wrapContract) {
+      wrapContract.ft_balance_of({
+        account_id: `${accountId}`,
       })
         .then(balance => {
           setBalance(balance);
@@ -28,7 +28,7 @@ export default function ButtonAppBar() {
           console.log(err);
         });
     }
-  }, []);
+  }, [accountId, wrapContract]);
 
   return (
     <Box sx={{ flexGrow: 1 }}>

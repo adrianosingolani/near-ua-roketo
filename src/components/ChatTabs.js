@@ -43,7 +43,7 @@ function a11yProps(index) {
   };
 }
 
-export default function ChatTabs() {
+export default function ChatTabs({ dappContract }) {
   const [value, setValue] = useState(1);
 
   const handleChange = (event, newValue) => {
@@ -77,7 +77,9 @@ export default function ChatTabs() {
           <Users />
         </TabPanel>
         <TabPanel value={value} index={1} sx={{ height: '100%' }}>
-          <Chat />
+          <Chat 
+            dappContract={dappContract}
+          />
         </TabPanel>
       </Box>
     </Box>

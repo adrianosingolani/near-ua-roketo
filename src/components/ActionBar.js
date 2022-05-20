@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import getNearEnv from '../nearEnv';
 import { parseNearAmount } from 'near-api-js/lib/utils/format';
 import Big from 'big.js';
 
@@ -10,8 +9,6 @@ import {
   Modal,
   Typography
 } from '@mui/material';
-
-const nearEnv = getNearEnv('testnet');
 
 const ActionButton = styled(Button)(({ theme }) => ({
   marginLeft: theme.spacing(0),
@@ -60,14 +57,14 @@ function ActionBar() {
     const amountToPay = Big(pricePerMinute).times(settings.minutes).toFixed(0);
 
     const args = {
-      receiver_id: nearEnv.roketoAccount,
+      receiver_id: nearEnv.roketoContract,
       amount: amountToPay,
       memo: 'memo',
       msg: JSON.stringify({
         Create: {
           request: {
             owner_id: window.accountId,
-            receiver_id: nearEnv.dappAccount,
+            receiver_id: nearEnv.dappContract,
             tokens_per_sec: parseInt(pricePerSecond),
             description: ''
           },
@@ -100,7 +97,7 @@ function ActionBar() {
 
   const getAccountIncomingStreams = () => {
     window.roketoContract.get_account_incoming_streams({
-      account_id: nearEnv.dappAccount,
+      account_id: nearEnv.dappContract,
       from: 0,
       limit: 10,
     })
@@ -122,7 +119,7 @@ function ActionBar() {
         // console.log(res);
 
         const streams = res.filter(stream => {
-          return stream.receiver_id === nearEnv.dappAccount
+          return stream.receiver_id === nearEnv.dappContract
         }).map(stream => {
           return stream;
         })
